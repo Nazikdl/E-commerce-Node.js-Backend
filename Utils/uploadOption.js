@@ -48,7 +48,7 @@ const fileFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-const upload = multer({
+const uploadOption = multer({
   storage,
   fileFilter,
   limits: {
@@ -58,4 +58,4 @@ const upload = multer({
 });
 
 export { allowedMimeTypes, maxFileSize };
-export default upload;
+export default uploadOption;

@@ -2,8 +2,7 @@ import ApiFeatures, { catchAsync, HandleERROR } from "vanta-api";
 import Brand from "./brandMd.js";
 import Product from "../Product/ProductMd.js";
 import fs from 'fs'
-import {__dirname} from '../../app.js'
-
+import { __dirname } from "../../app.js";
 export const getAll=catchAsync(async(req,res,next)=>{
 const condition=req.role!='admin' && req.role!='superAdmin' ? {isPublished:true}:{}
 const features=new ApiFeatures(Brand,req.query,req,role)
