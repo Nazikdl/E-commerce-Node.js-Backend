@@ -11,6 +11,7 @@ import exportValidation from './Middlewares/exportValidation.js'
 import isLogin from './Middlewares/isLogin.js'
 import isAdmin from './Middlewares/isAdmin.js'
 import uploadRouter from './Modules/Upload/upload.js'
+import brandRouter from './Modules/Brand/brand.js'
 
 
 const __filename=fileURLToPath(import.meta.url)
@@ -26,6 +27,7 @@ app.use(exportValidation)
 app.use('/api/users',isLogin,userRouter)
 app.use('/api/auth',authRouter)
 app.use('/api/uploads',isAdmin,uploadRouter)
+app.use('/api/brands',brandRouter)
 
 
 
