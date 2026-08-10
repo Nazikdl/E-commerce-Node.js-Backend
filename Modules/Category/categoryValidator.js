@@ -65,7 +65,6 @@ export const validateCategoryQuery = () => {
     
     query('supCategoryId')
       .optional()
-      .isMongoId()
       .withMessage('Invalid super category ID format'),
     
     handleValidationErrors
@@ -110,7 +109,6 @@ export const categoryIsPublishedValidation = () => {
 export const categorySupCategoryValidation = () => {
   return body('supCategoryId')
     .optional()
-    .isMongoId()
     .withMessage('Invalid super category ID format')
     .custom(async (value) => {
       if (!value) return true;

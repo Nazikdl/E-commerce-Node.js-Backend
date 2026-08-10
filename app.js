@@ -15,6 +15,7 @@ import brandRouter from "./Modules/Brand/brand.js";
 import categoryRouter from "./Modules/Category/category.js";
 import sliderRouter from "./Modules/Slider/slider.js";
 import variantRouter from "./Modules/Variant/variant.js";
+import addressRouter from "./Modules/Address/address.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -33,6 +34,7 @@ app.use("/api/brands", brandRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/sliders", sliderRouter);
 app.use("/api/variants", variantRouter);
+app.use("/api/addresses", isLogin, addressRouter);
 
 app.use(catchError);
 export default app;
