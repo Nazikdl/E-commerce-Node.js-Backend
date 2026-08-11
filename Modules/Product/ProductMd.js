@@ -86,8 +86,9 @@ const productSchema = new mongoose.Schema(
       default: [],
     },
     defaultProductVariantId: {
-      type: { type: mongoose.Schema.Types.ObjectId, ref: "productVariant" },
-      default: null,
+      type: { type: mongoose.Schema.Types.ObjectId, 
+        ref: "productVariant" },
+      default:{}
     },
     minPrice: {
       type: Number,

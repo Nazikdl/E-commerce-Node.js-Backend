@@ -64,8 +64,9 @@ export const validateCategoryQuery = () => {
       .toBoolean(),
     
     query('supCategoryId')
-      .optional()
-      .withMessage('Invalid super category ID format'),
+  .optional({ nullable: true })
+  .isMongoId()
+  .withMessage('Invalid super category ID format'),
     
     handleValidationErrors
   ];
@@ -108,10 +109,14 @@ export const categoryIsPublishedValidation = () => {
 // Super category validation
 export const categorySupCategoryValidation = () => {
   return body('supCategoryId')
-    .optional()
-    .withMessage('Invalid super category ID format')
+    .optional({ nullable: true })  
     .custom(async (value) => {
       if (!value) return true;
+      
+      
+      if (!mongoose.Types.ObjectId.isValid(value)) {
+        throw new Error('Invalid super category ID format');
+      }
       
       const category = await Category.findById(value);
       if (!category) {
@@ -125,8 +130,7 @@ export const categorySupCategoryValidation = () => {
       
       return true;
     });
-};
-
+}
 // ==================== CATEGORY VALIDATORS ====================
 
 // 1. Get All Categories Validator
