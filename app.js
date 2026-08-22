@@ -17,6 +17,8 @@ import sliderRouter from "./Modules/Slider/slider.js";
 import variantRouter from "./Modules/Variant/variant.js";
 import addressRouter from "./Modules/Address/address.js";
 import productRouter from "./Modules/Product/product.js";
+import productVariantRouter from "./Modules/ProductVariant/productVariant.js";
+import commentRouter from "./Modules/Comment/comment.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -37,6 +39,8 @@ app.use("/api/sliders", sliderRouter);
 app.use("/api/variants", variantRouter);
 app.use("/api/addresses", isLogin, addressRouter);
 app.use('/api/products',productRouter)
+app.use('/api/product-variants',productVariantRouter)
+app.use('/api/comments',commentRouter)
 
 app.use(catchError);
 export default app;
