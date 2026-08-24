@@ -1,9 +1,10 @@
 import ApiFeatures, { catchAsync, HandleERROR } from "vanta-api";
 import User from "../User/userMd.js";
 import Product from "../Product/ProductMd.js";
+import Comment from "./commentMd.js";
 
 export const getAll = catchAsync(async (req, res, next) => {
-  const features = new ApiFeatures(Brand, req.query, req, role)
+  const features = new ApiFeatures(Comment, req.query, req.role)
     .filter()
     .search()
     .sort()
@@ -26,7 +27,7 @@ export const getAllCommentOfProduct = catchAsync(async (req, res, next) => {
     req.role != "admin" && req.role != "superAdmin"
       ? { isPublished: true, productId }
       : { productId };
-  const features = new ApiFeatures(Comment, req.query, req, role)
+  const features = new ApiFeatures(Comment, req.query, req.role)
     .addManualFilters(condition)
     .filter()
     .search()

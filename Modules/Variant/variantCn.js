@@ -3,7 +3,7 @@ import Variant from "./variantMd.js";
 import ProductVariant from "../ProductVariant/productVariantMd.js";
 
 export const getAll = catchAsync(async (req, res, next) => {
-  const features = new ApiFeatures(Variant, req.query, req, role)
+  const features = new ApiFeatures(Variant, req.query, req.role)
     .filter()
     .search(["value"])
     .sort()
@@ -16,8 +16,7 @@ export const getOne = catchAsync(async (req, res, next) => {
   const features = new ApiFeatures(
     Variant,
     req.query,
-    req,
-    role,
+    req.role,
   ).addManualFilters({ _id: req.params.id });
   const result = await features.execute();
   return res.status(200).json(result);

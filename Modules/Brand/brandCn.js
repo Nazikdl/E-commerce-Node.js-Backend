@@ -5,7 +5,7 @@ import fs from 'fs'
 import { __dirname } from "../../app.js";
 export const getAll=catchAsync(async(req,res,next)=>{
 const condition=req.role!='admin' && req.role!='superAdmin' ? {isPublished:true}:{}
-const features=new ApiFeatures(Brand,req.query,req,role)
+const features=new ApiFeatures(Brand,req.query,req.role)
 .addManualFilters(condition)
 .filter()
 .search(['title'])
@@ -17,7 +17,7 @@ return res.status(200).json(result)
 })
 export const getOne=catchAsync(async(req,res,next)=>{
 const condition=req.role!='admin' && req.role!='superAdmin' ? {isPublished:true, _id:req.params.id}:{ _id:req.params.id}
-const features=new ApiFeatures(Brand,req.query,req,role)
+const features=new ApiFeatures(Brand,req.query,req.role)
 .addManualFilters(condition)
 const result=await features.execute()
 return res.status(200).json(result)

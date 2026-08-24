@@ -19,6 +19,7 @@ import addressRouter from "./Modules/Address/address.js";
 import productRouter from "./Modules/Product/product.js";
 import productVariantRouter from "./Modules/ProductVariant/productVariant.js";
 import commentRouter from "./Modules/Comment/comment.js";
+import searchRouter from "./Modules/Search/search.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -41,6 +42,7 @@ app.use("/api/addresses", isLogin, addressRouter);
 app.use('/api/products',productRouter)
 app.use('/api/product-variants',productVariantRouter)
 app.use('/api/comments',commentRouter)
+app.use('/api/search',searchRouter)
 
 app.use(catchError);
 export default app;

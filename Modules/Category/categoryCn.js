@@ -8,7 +8,7 @@ export const getAll = catchAsync(async (req, res, next) => {
     req.role != "admin" && req.role != "superAdmin"
       ? { isPublished: true }
       : {};
-  const features = new ApiFeatures(Category, req.query, req, role)
+  const features = new ApiFeatures(Category, req.query, req.role)
     .addManualFilters(condition)
     .filter()
     .search(["title"])
@@ -24,7 +24,7 @@ export const getOne = catchAsync(async (req, res, next) => {
     req.role != "admin" && req.role != "superAdmin"
       ? { isPublished: true, _id: req.params.id }
       : { _id: req.params.id };
-  const features = new ApiFeatures(Category, req.query, req, role)
+  const features = new ApiFeatures(Category, req.query, req.role)
     .addManualFilters(condition)
     .populate([{ path: "supCategoryId" }, { path: "subCategoryIds" }]);
 
