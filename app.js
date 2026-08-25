@@ -20,6 +20,7 @@ import productRouter from "./Modules/Product/product.js";
 import productVariantRouter from "./Modules/ProductVariant/productVariant.js";
 import commentRouter from "./Modules/Comment/comment.js";
 import searchRouter from "./Modules/Search/search.js";
+import discountCodeRouter from "./Modules/DiscountCode/discountCode.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -43,6 +44,7 @@ app.use('/api/products',productRouter)
 app.use('/api/product-variants',productVariantRouter)
 app.use('/api/comments',commentRouter)
 app.use('/api/search',searchRouter)
+app.use('/api/discount-code',discountCodeRouter)
 
 app.use(catchError);
 export default app;
