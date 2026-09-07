@@ -1,7 +1,7 @@
 import { catchAsync, HandleERROR } from "vanta-api";
 
 const isLogin=catchAsync(async (req,res,next) => {
-    if(!req.role){
+    if(!req.role || !re.userId){
         return next(new HandleERROR('You do not have a permission',401))
     }
     next()

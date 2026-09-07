@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const itemSchema = new mongoose.model({
+const itemSchema = new mongoose.Schema({
   brandId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Brand",

@@ -21,6 +21,7 @@ import productVariantRouter from "./Modules/ProductVariant/productVariant.js";
 import commentRouter from "./Modules/Comment/comment.js";
 import searchRouter from "./Modules/Search/search.js";
 import discountCodeRouter from "./Modules/DiscountCode/discountCode.js";
+import cartRouter from "./Modules/Cart/cart.js";
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -40,11 +41,12 @@ app.use("/api/categories", categoryRouter);
 app.use("/api/sliders", sliderRouter);
 app.use("/api/variants", variantRouter);
 app.use("/api/addresses", isLogin, addressRouter);
-app.use('/api/products',productRouter)
-app.use('/api/product-variants',productVariantRouter)
-app.use('/api/comments',commentRouter)
-app.use('/api/search',searchRouter)
-app.use('/api/discount-code',discountCodeRouter)
+app.use("/api/products", productRouter);
+app.use("/api/product-variants", productVariantRouter);
+app.use("/api/comments", commentRouter);
+app.use("/api/search", searchRouter);
+app.use("/api/discount-code", discountCodeRouter);
+app.use("/api/cart", isLogin, cartRouter);
 
 app.use(catchError);
 export default app;

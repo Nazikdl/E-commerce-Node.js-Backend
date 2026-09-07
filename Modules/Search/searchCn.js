@@ -5,7 +5,9 @@ import Brand from "../Brand/brandMd.js";
 
 export const search = catchAsync(async (req, res, next) => {
   const condition = { isPublished: true };
-  const ProductFeatures = new ApiFeatures(Product, req.query, req.role)
+  const role = req.role || 'user';
+
+  const ProductFeatures = new ApiFeatures(Product, req.query, role)
     .addManualFilters(condition)
     .filter()
     .sort()
