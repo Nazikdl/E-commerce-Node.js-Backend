@@ -6,6 +6,6 @@ uploadRouter.route('/')
     .post(uploadOption.single('file'), singleUpload)
     .delete(removeSingleFile)
 uploadRouter.route('/multi')
-    .post(uploadOption.single('files', 10), multiUpload)
+    .post(uploadOption.array('files', 10), multiUpload)
     .delete(removeMultiFiles)
 export default uploadRouter

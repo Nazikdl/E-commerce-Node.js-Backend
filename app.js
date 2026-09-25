@@ -22,6 +22,8 @@ import commentRouter from "./Modules/Comment/comment.js";
 import searchRouter from "./Modules/Search/search.js";
 import discountCodeRouter from "./Modules/DiscountCode/discountCode.js";
 import cartRouter from "./Modules/Cart/cart.js";
+import { swaggerSpec } from "./Utils/Swagger.js";
+import swaggerUi from 'swagger-ui-express'
 
 const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -34,6 +36,7 @@ app.use("/uploads", express.static(`${__dirname}/Public`));
 
 app.use(exportValidation);
 app.use("/api/users", isLogin, userRouter);
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerSpec))
 app.use("/api/auth", authRouter);
 app.use("/api/uploads", isAdmin, uploadRouter);
 app.use("/api/brands", brandRouter);

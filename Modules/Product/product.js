@@ -20,6 +20,8 @@ import {
 } from "./productValidator.js";
 
 const productRouter = Router();
+productRouter.route("/favorite/:id")
+  .post(isLogin, validateFavoriteToggle, validateProductExists, toggleFavorite);
 
 productRouter.route("/")
   .get(validateProductGet, getAll)
@@ -30,7 +32,6 @@ productRouter.route("/:id")
   .patch(isAdmin, validateProductExists, validateProductUpdate, update)
   .delete(isAdmin, validateProductExists, validateProductDelete, remove);
 
-productRouter.route("/favorite/:id")
-  .post(isLogin, validateFavoriteToggle, validateProductExists, toggleFavorite);
+
 
 export default productRouter;
