@@ -70,7 +70,7 @@ export const loginWithOtp = catchAsync(async (req, res, next) => {
       token,
       user,
     },
-    message: "login with password successfully",
+    message: "login with code successfully",
   });
 });
 export const resendCode = catchAsync(async (req, res, next) => {

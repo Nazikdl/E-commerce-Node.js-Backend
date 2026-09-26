@@ -2,15 +2,24 @@ import { body, validationResult } from 'express-validator';
 import { HandleERROR } from 'vanta-api';
 import { handleValidationErrors } from '../../Utils/handleValidationErrors.js';
 
+// ==================== VALIDATION RULES ====================
 
-// Phone number validation rules
-export const phoneNumberValidation = () => {
-  return body('phoneNumber')
-    .trim()
+// Phone number validation rules (فقط با صفر اول - 11 رقم)
+export const phoneNumberValidation = (optional = false) => {
+  const chain = body('phoneNumber').trim();
+
+  if (optional) {
+    return chain
+      .optional({ checkFalsy: true })
+      .matches(/^09\d{9}$/)
+      .withMessage('Invalid Iranian phone number format (ex: 09123456789)');
+  }
+
+  return chain
     .notEmpty()
     .withMessage('Phone number is required')
-    .matches(/^(\+98|0)?9\d{9}$/)
-    .withMessage('Invalid Iranian phone number format (ex: 09123456789 or +989123456789)');
+    .matches(/^09\d{9}$/)
+    .withMessage('Invalid Iranian phone number format (ex: 09123456789)');
 };
 
 // Password validation rules
@@ -57,14 +66,14 @@ export const optionalFieldsValidation = () => {
       .trim()
       .isLength({ min: 2, max: 100 })
       .withMessage('Full name must be between 2 to 100 characters'),
-    
+
     body('email')
       .optional()
       .trim()
       .isEmail()
       .withMessage('Invalid email format')
       .normalizeEmail(),
-    
+
     body('birthYear')
       .optional()
       .isISO8601()
@@ -86,27 +95,27 @@ export const roleValidation = () => {
 // 1. Auth Validator - Initialize authentication
 export const validateAuth = [
   phoneNumberValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 // 2. Login with Password Validator
 export const validateLoginPassword = [
   phoneNumberValidation(),
   passwordValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 // 3. Login with OTP Validator
 export const validateLoginOtp = [
   phoneNumberValidation(),
   otpCodeValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 // 4. Resend Code Validator
 export const validateResendCode = [
   phoneNumberValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 // 5. Forget Password Validator
@@ -114,14 +123,14 @@ export const validateForgetPassword = [
   phoneNumberValidation(),
   otpCodeValidation(),
   newPasswordValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 // 6. Update Profile Validator
 export const validateUpdateProfile = [
   optionalFieldsValidation(),
-  phoneNumberValidation().optional(),
-  handleValidationErrors
+  phoneNumberValidation(true), // optional
+  handleValidationErrors,
 ];
 
 // 7. Change Password Validator
@@ -130,9 +139,9 @@ export const validateChangePassword = [
     .trim()
     .notEmpty()
     .withMessage('Current password is required'),
-  
+
   newPasswordValidation(),
-  
+
   body('confirmPassword')
     .trim()
     .notEmpty()
@@ -143,8 +152,8 @@ export const validateChangePassword = [
       }
       return true;
     }),
-  
-  handleValidationErrors
+
+  handleValidationErrors,
 ];
 
 // 8. Admin User Management Validator
@@ -153,7 +162,7 @@ export const validateAdminCreateUser = [
   passwordValidation(),
   roleValidation(),
   optionalFieldsValidation(),
-  handleValidationErrors
+  handleValidationErrors,
 ];
 
 export const validateAdminUpdateUser = [
@@ -162,14 +171,14 @@ export const validateAdminUpdateUser = [
     .withMessage('User ID is required')
     .isMongoId()
     .withMessage('Invalid user ID format'),
-  
+
   optionalFieldsValidation(),
   roleValidation(),
-  
+
   body('isActive')
     .optional()
     .isBoolean()
     .withMessage('isActive must be a boolean'),
-  
-  handleValidationErrors
+
+  handleValidationErrors,
 ];

@@ -3,6 +3,24 @@
 ## 📝 توضیحات پروژه
 یک API فروشگاهی پیشرفته با استفاده از **Node.js** و **Express.js** که امکانات احراز هویت، مدیریت کاربران و عملیات CRUD رو فراهم میکنه.
 
+<h2>📸 تصاویر Swagger UI</h2>
+
+<p align="center">
+  <img src="./public/swagger1.jpg" width="45%" />
+  <img src="./public/swagger2.jpg" width="45%" />
+</p>
+<p align="center">
+  <img src="./public/swagger3.jpg" width="45%" />
+  <img src="./public/swagger4.jpg" width="45%" />
+</p>
+<p align="center">
+  <img src="./public/swagger5.jpg" width="45%" />
+  <img src="./public/swagger6.gpg" width="45%" />
+</p>
+<p align="center">
+  <img src="./public/swagger7.jpg" width="60%" />
+</p>
+
 ## 🛠️ تکنولوژی‌ها و پکیج‌های استفاده شده
 
 ### اصلی
@@ -40,6 +58,4 @@
 - **Node.js** نسخه 18 یا بالاتر
 - **MongoDB** نسخه 6 یا بالاتر
 - **npm** 
-
-#این پروژه در حال توسعه میباشد
 

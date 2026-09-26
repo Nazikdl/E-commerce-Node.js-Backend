@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: String,
-    match: [/^(\\+98|0)?9\\d{9}$/, "invalid phone number"],
+    match: [/^09\d{9}$/, "invalid phone number"],
     required: [true, "phone number is required"],
     unique: [true, "phone number already taken"],
   },
