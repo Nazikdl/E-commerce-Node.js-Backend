@@ -10,15 +10,15 @@
   <img src="./public/swagger2.jpg" width="45%" />
 </p>
 <p align="center">
-  <img src="./public/swagger3.jpg" width="45%" />
-  <img src="./public/swagger4.jpg" width="45%" />
+  <img src="./Public/swagger3.jpg" width="45%" />
+  <img src="./Public/swagger4.jpg" width="45%" />
 </p>
 <p align="center">
-  <img src="./public/swagger5.jpg" width="45%" />
-  <img src="./public/swagger6.gpg" width="45%" />
+  <img src="./Public/swagger5.jpg" width="45%" />
+  <img src="./Public/swagger6.jpg" width="45%" />
 </p>
 <p align="center">
-  <img src="./public/swagger7.jpg" width="60%" />
+  <img src="./Public/swagger7.jpg" width="60%" />
 </p>
 
 ## 🛠️ تکنولوژی‌ها و پکیج‌های استفاده شده
