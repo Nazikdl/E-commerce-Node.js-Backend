@@ -6,8 +6,8 @@
 <h2>📸 تصاویر Swagger UI</h2>
 
 <p align="center">
-  <img src="./public/swagger1.jpg" width="45%" />
-  <img src="./public/swagger2.jpg" width="45%" />
+  <img src="./Public/swagger1.jpg" width="45%" />
+  <img src="./Public/swagger2.jpg" width="45%" />
 </p>
 <p align="center">
   <img src="./Public/swagger3.jpg" width="45%" />
